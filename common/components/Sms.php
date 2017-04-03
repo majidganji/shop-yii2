@@ -4,9 +4,9 @@ namespace common\components;
 class Sms
 {
     private static $url = 'http://n.sms.ir/ws/SendReceive.asmx?wsdl';
-    private static $lineNumber = '50002015583459';
-    private static $username = '09147347973';
-    private static $password = '268697';
+    private static $lineNumber = '****************';
+    private static $username = '****************';
+    private static $password = '***************';
 
     public static function send($to, $text)
     {

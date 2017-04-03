@@ -49,7 +49,9 @@
                 $menuItems[] = ['label' => $category->name, 'items' => $item];
             }
         }
-        $menuItems[] = ['label' => '<span class="fa fa-shopping-cart fa-lg text-' . (empty(Yii::$app->session->get('basket')) ? 'danger' : 'success') . '"></span>', 'url' => ['products/order']];
+        $menuItems[] = [
+                'label' => '<span id="shopping-cart" class="fa fa-shopping-cart fa-lg text-' . (empty(Yii::$app->session->get('basket')) ? 'danger' : 'success') . '"></span> سبد خرید <span id="shopping-count" class="badge">' . count(Yii::$app->session->get("basket")) .'</span>',
+                'url' => ['products/order']];
         echo Nav::widget([
             'encodeLabels' => FALSE,
             'options'      => ['class' => 'navbar-nav'],

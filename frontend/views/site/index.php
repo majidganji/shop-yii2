@@ -20,7 +20,7 @@
                 <div class="well well-sm">
                     <div class="well-sm" style="height: 60px;">
                         <?php Pjax::begin(); ?>
-                        <a class="btn btn-primary btn-xs pull-left"
+                        <a class="btn btn-primary btn-xs pull-left shopping"
                            href="<?= Url::to(['products/add', 'id' => $model->id]) ?>"><span
                                 class="fa fa-plus fa-fw"></span></a>
                         <?php Pjax::end(); ?>
@@ -60,3 +60,24 @@
         </div>
     <?php endif; ?>
 </div>
+
+<?php
+$js = <<<JS
+    $('.shopping').on('click', function(event) {
+        event.preventDefault();
+        var url = $(this).attr('href');
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: "json",
+            success: function(result) {
+              if(result.count > 0){
+                  $('#shopping-cart').removeClass('text-danger').addClass('text-success');
+                  var a = $('#shopping-count').text('  ' + result.count);
+              }
+            }
+        });
+    });
+JS;
+
+$this->registerJs($js);

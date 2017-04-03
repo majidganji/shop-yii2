@@ -19,7 +19,8 @@ class ProductsController extends Controller {
             $basket[$model->id] ++;
         }
         Yii::$app->session->set('basket', $basket);
-        return $this->redirect(Yii::$app->getRequest()->referrer);
+        return json_encode(['color'=> 'text-success', 'count' => count($basket)]);
+//        return $this->redirect(Yii::$app->getRequest()->referrer);
     }
 
     public function actionRemove($id) {
